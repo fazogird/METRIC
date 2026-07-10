@@ -1,0 +1,37 @@
+{
+  "tag": "METRIC_monthly_ET_2026-03_P155_R033",
+  "path": 155,
+  "row": 33,
+  "year": 2026,
+  "month": 3,
+  "start": "2026-03-01",
+  "end": "2026-03-31",
+  "run_time_sec": 739.4,
+  "n_images": 2,
+  "image_dates": [
+    "2026-03-13",
+    "2026-03-29"
+  ],
+  "et_monthly_mm": 20.26,
+  "albedo_method": "avg3",
+  "etrf_images": [
+    {
+      "date": "2026-03-13",
+      "etrf_tile": 0.2199,
+      "etr_mm_hr": 0.0964,
+      "crad": 0.98,
+      "le_wm2": -7.0,
+      "rn_wm2": -1.2,
+      "h_wm2": 6.3
+    },
+    {
+      "date": "2026-03-29",
+      "etrf_tile": 0.4945,
+      "etr_mm_hr": 0.1322,
+      "crad": 0.9887,
+      "le_wm2": 45.2,
+      "rn_wm2": 36.0,
+      "h_wm2": -12.8
+    }
+  ]
+}

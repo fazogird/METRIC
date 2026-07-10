@@ -1,0 +1,13 @@
+
+────────────────────────────────────────────────────────────
+  METRIC_monthly_ET_2026-03_P153_R032
+  Sana: 2026-03-01  →  2026-03-31
+  Albedo: avg3  |  Scale: 30m
+────────────────────────────────────────────────────────────
+  Bbox: lon=[69.65, 72.24]  lat=[39.33, 41.33]
+  WRS filter: Path=153 Row=32
+Topilgan tasvirlar: 1
+    ⚠️  Cloud precheck FAIL: 66.6% (cropland, limit=20%) → skip
+  2026-03-07: 2373135 pixels — cloud precheck fail → skip
+
+  ❌ XATO: Tasvir topilmadi

@@ -1,0 +1,38 @@
+{
+  "run_time": "20260622_162340",
+  "n_total": 6,
+  "n_done": 1,
+  "n_skipped": 5,
+  "n_errors": 0,
+  "results": [
+    {
+      "tag": "METRIC_monthly_ET_2026-05_P155_R033",
+      "path": 155,
+      "row": 33,
+      "year": 2026,
+      "month": 5,
+      "start": "2026-05-01",
+      "end": "2026-05-31",
+      "run_time_sec": 302.0,
+      "n_images": 1,
+      "image_dates": [
+        "2026-05-16"
+      ],
+      "et_monthly_mm": 64.25,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-05-16",
+          "etrf_tile": 0.3928,
+          "etr_mm_hr": 0.3717,
+          "crad": 0.9965,
+          "le_wm2": 93.0,
+          "rn_wm2": 63.7,
+          "h_wm2": -41.3
+        }
+      ],
+      "export_task_id": "YFWSMKXQX3IQJSYULW455IKG",
+      "export_status": "READY"
+    }
+  ]
+}

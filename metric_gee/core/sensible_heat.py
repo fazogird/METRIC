@@ -60,6 +60,7 @@ class SensibleHeatFlux:
         # ── Anchor qiymatlari ──────────────────────────────────────
         h_cold    = anchor_data['h_cold']
         h_hot     = anchor_data['h_hot']
+        # Mask Landsat UTM 300m da bo'lishi kerak (_run_cimec da reproject qilingan)
         cold_mask = anchor_data['cold_mask']
         hot_mask  = anchor_data['hot_mask']
         cold_ts   = anchor_data['cold_ts']
@@ -134,11 +135,21 @@ class SensibleHeatFlux:
 
             # ── Anchor rah sampling → a, b yangilash ──────────────
             def _masked_mean(img, mask):
-                """Maskadagi o'rtacha — ee.Number qaytaradi."""
-                res = img.updateMask(mask).reduceRegion(
-                    ee.Reducer.mean(), geometry, 100, maxPixels=1e9
-                ).values()
-                return ee.Number(res.get(0))
+                """Maskadagi o'rtacha — null-safe. Mask Landsat UTM 300m da."""
+                for scale in [300, 1000]:
+                    res = img.updateMask(mask).reduceRegion(
+                        ee.Reducer.mean(), geometry, scale, maxPixels=1e9
+                    ).getInfo()
+                    if res:
+                        val = next((v for v in res.values() if v is not None), None)
+                        if val is not None:
+                            return ee.Number(val)
+                # Fallback: maskasiz butun qism
+                res = img.reduceRegion(
+                    ee.Reducer.mean(), geometry, 300, maxPixels=1e9
+                ).getInfo()
+                val = next((v for v in res.values() if v is not None), 0.0) if res else 0.0
+                return ee.Number(val)
 
             cold_rah_new = _masked_mean(rah,     cold_mask)
             hot_rah_new  = _masked_mean(rah,     hot_mask)
@@ -195,7 +206,8 @@ class SensibleHeatFlux:
 
         rn_g = rn.subtract(g)
         H_final = H_final.min(rn_g)                  # H ≤ Rn-G  (LE ≥ 0)
-        H_final = H_final.max(rn_g.multiply(-0.3))   # LE ≤ 1.3*(Rn-G)
+        # ✅ KERAK (Allen 2007: "ET can exceed Rn in arid locations"):
+        H_final = H_final.max(rn_g.multiply(-1.0))   # LE ≤ 2.0*(Rn-G)
 
         return H_final
 
@@ -215,13 +227,16 @@ class SensibleHeatFlux:
             psi_h2   : ee.Image — rah uchun (2m)
             psi_h01  : ee.Image — rah uchun (0.1m)
         """
-        # x parametrlari (unstable, L < 0)
+        # x parametrlari (unstable, L < 0).
+        # Stable (L > 0) piksellar uchun L_neg → katta manfiy → x≈1 (neytral).
+        # Bu psi_unst ni masked qilmaydi; .where() keyinroq psi_st bilan almashadi.
+        L_neg = L.where(L.gte(0), ee.Image.constant(-1e6))
         x200 = ee.Image.constant(1).subtract(
-            ee.Image.constant(16 * Z_BLEND).divide(L)).pow(0.25)
+            ee.Image.constant(16 * Z_BLEND).divide(L_neg)).pow(0.25)
         x2   = ee.Image.constant(1).subtract(
-            ee.Image.constant(16 * Z2).divide(L)).pow(0.25)
+            ee.Image.constant(16 * Z2).divide(L_neg)).pow(0.25)
         x01  = ee.Image.constant(1).subtract(
-            ee.Image.constant(16 * Z1).divide(L)).pow(0.25)
+            ee.Image.constant(16 * Z1).divide(L_neg)).pow(0.25)
 
         # F.41: ψm(200m) unstable
         psi_m_unst = (x200.add(1).divide(2).log().multiply(2)
@@ -236,7 +251,7 @@ class SensibleHeatFlux:
         psi_h01_unst = x01.pow(2).add(1).divide(2).log().multiply(2)
 
         # F.44: ψm(200m) stable — -5·z/L, z=200m  ← to'g'ri!
-        psi_m_st   = ee.Image.constant(-5 * Z_BLEND).divide(L)
+        psi_m_st   = ee.Image.constant(-5 * Z2).divide(L)
         # F.45: ψh(2m) stable
         psi_h2_st  = ee.Image.constant(-5 * Z2).divide(L)
         # F.45: ψh(0.1m) stable

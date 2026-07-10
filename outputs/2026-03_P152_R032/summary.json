@@ -1,0 +1,27 @@
+{
+  "tag": "METRIC_monthly_ET_2026-03_P152_R032",
+  "path": 152,
+  "row": 32,
+  "year": 2026,
+  "month": 3,
+  "start": "2026-03-01",
+  "end": "2026-03-31",
+  "run_time_sec": 401.5,
+  "n_images": 1,
+  "image_dates": [
+    "2026-03-24"
+  ],
+  "et_monthly_mm": 0.32,
+  "albedo_method": "avg3",
+  "etrf_images": [
+    {
+      "date": "2026-03-24",
+      "etrf_tile": 0.1,
+      "etr_mm_hr": 0.0442,
+      "crad": 0.9643,
+      "le_wm2": -58.7,
+      "rn_wm2": -32.4,
+      "h_wm2": 30.7
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "run_time": "20260622_165244",
+  "n_total": 9,
+  "n_done": 6,
+  "n_skipped": 3,
+  "n_errors": 0,
+  "results": [
+    {
+      "tag": "METRIC_monthly_ET_2026-03_P156_R032",
+      "path": 156,
+      "row": 32,
+      "year": 2026,
+      "month": 3,
+      "start": "2026-03-01",
+      "end": "2026-03-31",
+      "run_time_sec": 1069.9,
+      "n_images": 2,
+      "image_dates": [
+        "2026-03-12",
+        "2026-03-20"
+      ],
+      "et_monthly_mm": 5.87,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-03-12",
+          "etrf_tile": 0.1696,
+          "etr_mm_hr": 0.1146,
+          "crad": 1.0058,
+          "le_wm2": -7.0,
+          "rn_wm2": -2.3,
+          "h_wm2": 4.8
+        },
+        {
+          "date": "2026-03-20",
+          "etrf_tile": 0.2047,
+          "etr_mm_hr": 0.143,
+          "crad": 1.0067,
+          "le_wm2": 3.2,
+          "rn_wm2": 2.0,
+          "h_wm2": -1.2
+        }
+      ],
+      "export_task_id": "4AAXA4FXWLOXENP6RQEU7QVY",
+      "export_status": "READY"
+    },
+    {
+      "tag": "METRIC_monthly_ET_2026-04_P156_R032",
+      "path": 156,
+      "row": 32,
+      "year": 2026,
+      "month": 4,
+      "start": "2026-04-01",
+      "end": "2026-04-30",
+      "run_time_sec": 865.1,
+      "n_images": 2,
+      "image_dates": [
+        "2026-04-13",
+        "2026-04-29"
+      ],
+      "et_monthly_mm": 58.84,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-04-13",
+          "etrf_tile": 0.4295,
+          "etr_mm_hr": 0.2904,
+          "crad": 1.0068,
+          "le_wm2": 81.9,
+          "rn_wm2": 54.8,
+          "h_wm2": -37.6
+        },
+        {
+          "date": "2026-04-29",
+          "etrf_tile": 0.5305,
+          "etr_mm_hr": 0.2761,
+          "crad": 1.0071,
+          "le_wm2": 97.0,
+          "rn_wm2": 74.6,
+          "h_wm2": -34.8
+        }
+      ],
+      "export_task_id": "M4IM4POQJTGCY3OHLPMAQYQQ",
+      "export_status": "READY"
+    },
+    {
+      "tag": "METRIC_monthly_ET_2026-05_P156_R032",
+      "path": 156,
+      "row": 32,
+      "year": 2026,
+      "month": 5,
+      "start": "2026-05-01",
+      "end": "2026-05-31",
+      "run_time_sec": 459.0,
+      "n_images": 1,
+      "image_dates": [
+        "2026-05-15"
+      ],
+      "et_monthly_mm": 81.34,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-05-15",
+          "etrf_tile": 0.4483,
+          "etr_mm_hr": 0.3567,
+          "crad": 1.0074,
+          "le_wm2": 101.9,
+          "rn_wm2": 75.0,
+          "h_wm2": -42.9
+        }
+      ],
+      "export_task_id": "BISECVUNYRXZV2FAZKISLTGE",
+      "export_status": "READY"
+    },
+    {
+      "tag": "METRIC_monthly_ET_2026-03_P155_R032",
+      "path": 155,
+      "row": 32,
+      "year": 2026,
+      "month": 3,
+      "start": "2026-03-01",
+      "end": "2026-03-31",
+      "run_time_sec": 404.9,
+      "n_images": 1,
+      "image_dates": [
+        "2026-03-13"
+      ],
+      "et_monthly_mm": 6.34,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-03-13",
+          "etrf_tile": 0.2147,
+          "etr_mm_hr": 0.106,
+          "crad": 1.0138,
+          "le_wm2": 1.6,
+          "rn_wm2": 3.4,
+          "h_wm2": 1.1
+        }
+      ],
+      "export_task_id": "KW3LZVDGV5R3NUT4SAZWXFT7",
+      "export_status": "READY"
+    },
+    {
+      "tag": "METRIC_monthly_ET_2026-04_P155_R032",
+      "path": 155,
+      "row": 32,
+      "year": 2026,
+      "month": 4,
+      "start": "2026-04-01",
+      "end": "2026-04-30",
+      "run_time_sec": 486.1,
+      "n_images": 1,
+      "image_dates": [
+        "2026-04-14"
+      ],
+      "et_monthly_mm": 63.28,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-04-14",
+          "etrf_tile": 0.5508,
+          "etr_mm_hr": 0.2719,
+          "crad": 1.0107,
+          "le_wm2": 96.8,
+          "rn_wm2": 68.0,
+          "h_wm2": -38.9
+        }
+      ],
+      "export_task_id": "A7AJZWQ7E6L5B5HDXDTAHR4Y",
+      "export_status": "READY"
+    },
+    {
+      "tag": "METRIC_monthly_ET_2026-05_P155_R032",
+      "path": 155,
+      "row": 32,
+      "year": 2026,
+      "month": 5,
+      "start": "2026-05-01",
+      "end": "2026-05-31",
+      "run_time_sec": 588.1,
+      "n_images": 1,
+      "image_dates": [
+        "2026-05-16"
+      ],
+      "et_monthly_mm": 86.4,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-05-16",
+          "etrf_tile": 0.5355,
+          "etr_mm_hr": 0.2879,
+          "crad": 1.0107,
+          "le_wm2": 96.4,
+          "rn_wm2": 76.0,
+          "h_wm2": -38.6
+        }
+      ],
+      "export_task_id": "VJ7QACHKKDNSB3GPKGKBKMPF",
+      "export_status": "READY"
+    }
+  ]
+}

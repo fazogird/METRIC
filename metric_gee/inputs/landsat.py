@@ -18,6 +18,7 @@ class LandsatLoader:
     
     # L8/9 OLI band nomlari → umumiy nomlar
     BAND_MAP = {
+        'SR_B1': 'B_UB',       # Ultra-blue / Coastal aerosol — Ke & avg3 albedo uchun
         'SR_B2': 'B_BLUE',
         'SR_B3': 'B_GREEN',
         'SR_B4': 'B_RED',
@@ -91,16 +92,24 @@ class LandsatLoader:
         L2 scale factors qo'llash.
         SR: reflectance = DN * 0.0000275 - 0.2  → [0, 1] oraliq
         ST: kelvin = DN * 0.00341802 + 149.0
+
+        SR_B1 (ultra-blue/coastal aerosol) — Ke & avg3 albedo metodlari uchun,
+        xuddi shu scale factor bilan qayta ishlanadi.
         """
-        sr_bands = image.select(['SR_B2','SR_B3','SR_B4','SR_B5','SR_B6','SR_B7'])
-        sr_scaled = sr_bands.multiply(L8_SR_SCALE).add(L8_SR_OFFSET).clamp(0, 1)
-        
+        # SR_B1 (ultra-blue) + SR_B2..B7 — bir xil scale factor
+        sr_bands = image.select(
+            ['SR_B1','SR_B2','SR_B3','SR_B4','SR_B5','SR_B6','SR_B7'])
+        sr_scaled = sr_bands.multiply(L8_SR_SCALE).add(L8_SR_OFFSET).clamp(0.001, 1.0) #.clamp(-0.199972, 1.602213)  # Landsat C2 fizik chegara
+
         st_band = image.select(['ST_B10'])
-        st_scaled = st_band.multiply(L8_ST_SCALE).add(L8_ST_OFFSET)
-        
+        st_scaled = st_band.multiply(L8_ST_SCALE).add(L8_ST_OFFSET).clamp(149.003418, 372.999941)  # Landsat C2 fizik chegara (K)
+
         qa_band = image.select(['QA_PIXEL'])
-        
-        return sr_scaled.addBands(st_scaled).addBands(qa_band).copyProperties(image, image.propertyNames())
+
+        return (sr_scaled
+                .addBands(st_scaled)
+                .addBands(qa_band)
+                .copyProperties(image, image.propertyNames()))
     
     def _rename_bands(self, image):
         """Band nomlarini umumiy nomlarga o'zgartirish."""

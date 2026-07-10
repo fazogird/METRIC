@@ -1,0 +1,27 @@
+{
+  "tag": "METRIC_monthly_ET_2026-05_P155_R032",
+  "path": 155,
+  "row": 32,
+  "year": 2026,
+  "month": 5,
+  "start": "2026-05-01",
+  "end": "2026-05-31",
+  "run_time_sec": 588.1,
+  "n_images": 1,
+  "image_dates": [
+    "2026-05-16"
+  ],
+  "et_monthly_mm": 86.4,
+  "albedo_method": "avg3",
+  "etrf_images": [
+    {
+      "date": "2026-05-16",
+      "etrf_tile": 0.5355,
+      "etr_mm_hr": 0.2879,
+      "crad": 1.0107,
+      "le_wm2": 96.4,
+      "rn_wm2": 76.0,
+      "h_wm2": -38.6
+    }
+  ]
+}

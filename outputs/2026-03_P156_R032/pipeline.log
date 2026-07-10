@@ -1,0 +1,206 @@
+
+────────────────────────────────────────────────────────────
+  METRIC_monthly_ET_2026-03_P156_R032
+  Sana: 2026-03-01  →  2026-03-31
+  Albedo: avg3  |  Scale: 30m
+────────────────────────────────────────────────────────────
+  Bbox: lon=[64.98, 67.61]  lat=[39.33, 41.33]
+  WRS filter: Path=156 Row=32
+Topilgan tasvirlar: 2
+    ✅ Cloud precheck OK: 0.6% (cropland, limit=20%)
+  2026-03-12: 2441078 pixels ✅
+    ✅ Cloud precheck OK: 6.3% (cropland, limit=20%)
+  2026-03-20: 2414249 pixels ✅
+
+  --- 2026-03-12 ---
+  ┌─ BAND DIAGNOSTIKA ─────────────────────────────────────────
+    [Landsat SR (surface reflectance, 0-1)]
+      B_BLUE                min=   0.0010  mean=   0.0709  max=   1.0000
+      B_GREEN               min=   0.0010  mean=   0.1078  max=   1.0000
+      B_RED                 min=   0.0010  mean=   0.1195  max=   1.0000
+      B_NIR                 min=   0.0010  mean=   0.2184  max=   1.0000
+      B_SWIR1               min=   0.0010  mean=   0.2088  max=   1.0000
+      B_SWIR2               min=   0.0021  mean=   0.1663  max=   1.0000
+    [Landsat Ts raw (K, birinchi qadam)]
+      B_THERMAL             min= 266.5355  mean= 281.7514  max= 298.3265
+    [Vegetation: NDVI (-1..1)]
+      NDVI                  min=  -0.9777  mean=   0.2633  max=   0.9902
+    [Vegetation: SAVI]
+      SAVI                  min=  -0.5368  mean=   0.2398  max=   0.8366
+    [Vegetation: LAI (m²/m²)]
+      LAI                   min=   0.0000  mean=   0.3123  max=   6.0000
+    [Albedo (0..0.4)]
+      albedo                min=   0.0101  mean=   0.1460  max=   0.7611
+    [Ts — actual (K)]
+      Ts                    min= 266.5355  mean= 281.7514  max= 298.3265
+    [TsDEM — lapse corrected (K)]
+      TsDEM                 min= 256.6996  mean= 281.9830  max= 300.1256
+    [Emissivity e0 (0.95..0.99)]
+      e0                    min=   0.9500  mean=   0.9555  max=   0.9850
+    [Rn — net radiation (W/m²)]
+      Rn                    min= -69.0956  mean=  -2.2678  max= 483.9406
+    [G  — soil heat flux (W/m²)]
+      G                     min= -31.6152  mean=  -0.1310  max= 162.8765
+    [u200 — wind 200m (m/s)]
+      u200                  min=   2.0000  mean=   5.7018  max=  11.4370
+    [zom  — roughness (m)]
+      zom                   min=   0.0050  mean=   0.0082  max=   0.1080
+    [u*   — friction vel (m/s)]
+      u_star                min=   0.0774  mean=   0.2492  max=   0.4573
+    [rah  — aero resist (s/m) ← KEY!]
+      rah                   min=  15.9769  mean=  31.5368  max=  94.4220
+    [rho  — air density (kg/m³)]
+      rho_air               min=   0.9442  mean=   1.1666  max=   1.2516
+    [ERA5 hourly — o'rtacha]
+      T2m (K)                 275.9879
+      Td  (K)                 267.0929
+      WS10 (m/s)              3.7840
+      P (kPa)                 96.8001
+      ea (kPa)                0.3925
+  └────────────────────────────────────────────────────────────
+  P₆₀=2262.1 mm  ETr₆₀=141.0 mm
+  Cold LC: [40]   Hot LC: [60, 50]
+  F.7 α_limit=0.2057  (β=41.8°)
+  F.8 Tfac=0.00 K  (P₆₀=2262.1 mm  ETr₆₀=141.0 mm  P/ETr=16.044)
+  L1-CIMEC: cold=18  hot=273
+  ✅ Anchor tanlandi: L1-CIMEC
+  Anchor plan: L1-CIMEC
+  Cold: Ts=279.70 K  NDVI=0.870
+  Hot:  Ts_phys=285.79 K  Tfac=0.00 K  Ts_corr=285.79 K  NDVI=0.079
+  F.4b ETrFcold = 1.05  (NDVI₁=0.870 ≥ 0.75)
+  F.5/F.6 fc=0.000  ETrFhot=0.050  (NDVIhot=0.079  ETrFbare=0.05)
+  Cold anchor: Rn=-4.1  G=-0.1  rah=31.8  rho=1.1666
+  Hot  anchor: Rn=-24.2  G=-1.5  rah=37.3  rho=1.1569
+  LE_cold=83.1  H_cold=-87.1 W/m²
+  LE_hot=3.9   H_hot=-26.6 W/m²
+    Iter  1: dT_hot=-1.0486 K  rah_hot=45.707 s/m  a=0.37266  b=-107.552
+    Iter  2: dT_hot=-1.0789 K  rah_hot=47.031 s/m  a=0.39843  b=-114.948
+    Iter  3: dT_hot=-1.0840 K  rah_hot=47.249 s/m  a=0.40654  b=-117.270
+    Iter  4: dT_hot=-1.0848 K  rah_hot=47.286 s/m  a=0.40893  b=-117.953
+    ✅ Converged at iter 4
+    a=0.2474 b=-71.57
+    Rn=-2 G=-0 H=5 W/m²
+    LE=-7 W/m²  ETr≈0.115 ETo≈0.073 mm/hr
+    ETrF(tile mean)=0.170
+    Crad(tile mean)=1.006
+
+  --- 2026-03-20 ---
+  ┌─ BAND DIAGNOSTIKA ─────────────────────────────────────────
+    [Landsat SR (surface reflectance, 0-1)]
+      B_BLUE                min=   0.0010  mean=   0.0782  max=   0.6551
+      B_GREEN               min=   0.0010  mean=   0.1216  max=   0.6659
+      B_RED                 min=   0.0010  mean=   0.1363  max=   0.7023
+      B_NIR                 min=   0.0010  mean=   0.2497  max=   0.7027
+      B_SWIR1               min=   0.0010  mean=   0.2531  max=   0.7954
+      B_SWIR2               min=   0.0026  mean=   0.2056  max=   1.0000
+    [Landsat Ts raw (K, birinchi qadam)]
+      B_THERMAL             min= 270.9584  mean= 297.8851  max= 313.5572
+    [Vegetation: NDVI (-1..1)]
+      NDVI                  min=  -0.9706  mean=   0.2725  max=   0.9932
+    [Vegetation: SAVI]
+      SAVI                  min=  -0.4773  mean=   0.2445  max=   0.8246
+    [Vegetation: LAI (m²/m²)]
+      LAI                   min=   0.0000  mean=   0.3142  max=   6.0000
+    [Albedo (0..0.4)]
+      albedo                min=   0.0111  mean=   0.1668  max=   0.5753
+    [Ts — actual (K)]
+      Ts                    min= 270.9584  mean= 297.8851  max= 313.5572
+    [TsDEM — lapse corrected (K)]
+      TsDEM                 min= 266.6757  mean= 298.3918  max= 314.6673
+    [Emissivity e0 (0.95..0.99)]
+      e0                    min=   0.9500  mean=   0.9556  max=   0.9850
+    [Rn — net radiation (W/m²)]
+      Rn                    min= -84.4722  mean=   2.0479  max= 520.5051
+    [G  — soil heat flux (W/m²)]
+      G                     min= -37.1417  mean=  -0.0205  max= 177.0403
+    [u200 — wind 200m (m/s)]
+      u200                  min=   2.0000  mean=   3.5637  max=   5.2455
+    [zom  — roughness (m)]
+      zom                   min=   0.0050  mean=   0.0081  max=   0.1080
+    [u*   — friction vel (m/s)]
+      u_star                min=   0.0774  mean=   0.1482  max=   0.2718
+    [rah  — aero resist (s/m) ← KEY!]
+      rah                   min=  26.8824  mean=  51.2852  max=  94.4220
+    [rho  — air density (kg/m³)]
+      rho_air               min=   0.9504  mean=   1.1090  max=   1.2108
+    [ERA5 hourly — o'rtacha]
+      T2m (K)                 287.2047
+      Td  (K)                 278.6523
+      WS10 (m/s)              2.3407
+      P (kPa)                 95.2389
+      ea (kPa)                0.9107
+  └────────────────────────────────────────────────────────────
+  P₆₀=1966.3 mm  ETr₆₀=159.1 mm
+  Cold LC: [40]   Hot LC: [60, 50]
+  F.7 α_limit=0.2014  (β=44.9°)
+  F.8 Tfac=0.00 K  (P₆₀=1966.3 mm  ETr₆₀=159.1 mm  P/ETr=12.362)
+  L1-CIMEC: cold=71  hot=239
+  ✅ Anchor tanlandi: L1-CIMEC
+  Anchor plan: L1-CIMEC
+  Cold: Ts=291.26 K  NDVI=0.846
+  Hot:  Ts_phys=304.44 K  Tfac=0.00 K  Ts_corr=304.44 K  NDVI=0.094
+  F.4b ETrFcold = 1.05  (NDVI₁=0.846 ≥ 0.75)
+  F.5/F.6 fc=0.000  ETrFhot=0.050  (NDVIhot=0.094  ETrFbare=0.05)
+  Cold anchor: Rn=-3.6  G=-0.2  rah=64.3  rho=1.1061
+  Hot  anchor: Rn=-13.5  G=-2.2  rah=60.7  rho=1.1130
+  LE_cold=102.6  H_cold=-105.9 W/m²
+  LE_hot=4.8   H_hot=-16.2 W/m²
+    Iter  1: dT_hot=-1.3913 K  rah_hot=96.254 s/m  a=1.74986  b=-534.110
+    Iter  2: dT_hot=-1.6035 K  rah_hot=110.934 s/m  a=1.73375  b=-529.419
+    Iter  3: dT_hot=-1.7173 K  rah_hot=118.802 s/m  a=1.72512  b=-526.905
+    Iter  4: dT_hot=-1.7809 K  rah_hot=123.203 s/m  a=1.72029  b=-525.499
+    Iter  5: dT_hot=-1.8174 K  rah_hot=125.728 s/m  a=1.71752  b=-524.692
+    Iter  6: dT_hot=-1.8386 K  rah_hot=127.196 s/m  a=1.71591  b=-524.223
+    Iter  7: dT_hot=-1.8510 K  rah_hot=128.056 s/m  a=1.71497  b=-523.948
+    Iter  8: dT_hot=-1.8583 K  rah_hot=128.562 s/m  a=1.71441  b=-523.786
+    Iter  9: dT_hot=-1.8627 K  rah_hot=128.860 s/m  a=1.71408  b=-523.691
+    Iter 10: dT_hot=-1.8652 K  rah_hot=129.036 s/m  a=1.71389  b=-523.635
+    Iter 11: dT_hot=-1.8667 K  rah_hot=129.140 s/m  a=1.71378  b=-523.601
+    Iter 12: dT_hot=-1.8676 K  rah_hot=129.202 s/m  a=1.71371  b=-523.582
+    ✅ Converged at iter 12
+    a=0.3993 b=-122.43
+    Rn=2 G=-0 H=-1 W/m²
+    LE=3 W/m²  ETr≈0.143 ETo≈0.100 mm/hr
+    ETrF(tile mean)=0.205
+    Crad(tile mean)=1.007
+
+  ETrF nuqtalar: 2 ta  |  interpolatsiya: article
+    Mar 12 → ETrF=0.170  Crad=1.006
+    Mar 20 → ETrF=0.205  Crad=1.007
+  2026-03-01  ETrF=0.109  ETr=2.38  Crad=1.006  ET=0.26 mm  
+  2026-03-02  ETrF=0.109  ETr=1.33  Crad=1.006  ET=0.15 mm  
+  2026-03-03  ETrF=0.109  ETr=1.16  Crad=1.006  ET=0.13 mm  
+  2026-03-04  ETrF=0.109  ETr=1.25  Crad=1.006  ET=0.14 mm  
+  2026-03-05  ETrF=0.109  ETr=0.59  Crad=1.006  ET=0.06 mm  
+  2026-03-06  ETrF=0.109  ETr=1.97  Crad=1.006  ET=0.22 mm  
+  2026-03-07  ETrF=0.109  ETr=1.95  Crad=1.006  ET=0.21 mm  
+  2026-03-08  ETrF=0.109  ETr=2.65  Crad=1.006  ET=0.29 mm  
+  2026-03-09  ETrF=0.109  ETr=1.29  Crad=1.006  ET=0.14 mm  
+  2026-03-10  ETrF=0.109  ETr=1.68  Crad=1.006  ET=0.18 mm  
+  2026-03-11  ETrF=0.109  ETr=2.36  Crad=1.006  ET=0.26 mm  
+  2026-03-12  ETrF=0.109  ETr=2.54  Crad=1.006  ET=0.28 mm  ◄
+  2026-03-13  ETrF=0.139  ETr=2.81  Crad=1.006  ET=0.39 mm  
+  2026-03-14  ETrF=0.139  ETr=1.88  Crad=1.006  ET=0.26 mm  
+  2026-03-15  ETrF=0.139  ETr=1.82  Crad=1.006  ET=0.25 mm  
+  2026-03-16  ETrF=0.139  ETr=2.63  Crad=1.006  ET=0.37 mm  
+  2026-03-17  ETrF=0.139  ETr=2.89  Crad=1.007  ET=0.40 mm  
+  2026-03-18  ETrF=0.139  ETr=2.21  Crad=1.007  ET=0.31 mm  
+  2026-03-19  ETrF=0.139  ETr=2.33  Crad=1.007  ET=0.33 mm  
+  2026-03-20  ETrF=0.169  ETr=2.76  Crad=1.007  ET=0.47 mm  ◄
+  2026-03-21  ETrF=0.169  ETr=3.13  Crad=1.007  ET=0.53 mm  
+  2026-03-22  ETrF=0.169  ETr=3.14  Crad=1.007  ET=0.53 mm  
+  2026-03-23  ETrF=0.169  ETr=3.12  Crad=1.007  ET=0.53 mm  
+  2026-03-24  ETrF=0.169  ETr=5.14  Crad=1.007  ET=0.87 mm  
+  2026-03-25  ETrF=0.169  ETr=5.36  Crad=1.007  ET=0.91 mm  
+  2026-03-26  ETrF=0.169  ETr=4.03  Crad=1.007  ET=0.68 mm  
+  2026-03-27  ETrF=0.169  ETr=5.29  Crad=1.007  ET=0.90 mm  
+  2026-03-28  ETrF=0.169  ETr=2.84  Crad=1.007  ET=0.48 mm  
+  2026-03-29  ETrF=0.169  ETr=3.41  Crad=1.007  ET=0.58 mm  
+  2026-03-30  ETrF=0.169  ETr=3.89  Crad=1.007  ET=0.66 mm  
+  2026-03-31  ETrF=0.169  ETr=4.73  Crad=1.007  ET=0.80 mm  
+
+  ET oylik mean=5.9 mm  (interpolatsiya: article)
+
+  ✅  ET=5.9 mm  |  2 tasvir  |  17.8 daq
+  Lokal: D:\Cloud_comp\METRC\metric_gee_v2.1\outputs\2026-03_P156_R032
+  📤 Drive: METRIC_Samarqand_2026/METRIC_monthly_ET_2026-03_P156_R032  [READY]

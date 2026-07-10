@@ -20,7 +20,7 @@ class NetRadiation:
     def __init__(self, settings):
         self.settings = settings
     
-    def calc_rn(self, albedo, ts, e0, era5, dem, solar):
+    def calc_rn(self, albedo, ts, e0, era5, dem, solar, anchor=None):
         """
         To'liq Rn hisoblash.
         
@@ -37,7 +37,7 @@ class NetRadiation:
         """
         tau_sw = self._calc_tau_sw(era5, dem, solar)
         rs_down = self._calc_rs_down(tau_sw, solar)
-        rl_down = self._calc_rl_down(tau_sw, era5)
+        rl_down = self._calc_rl_down(tau_sw, ts, anchor=anchor, era5=era5)
         rl_up = self._calc_rl_up(ts, e0)
         
         # F.2: Rn = RS↓ - α·RS↓ + RL↓ - RL↑ - (1-ε₀)·RL↓
@@ -62,11 +62,13 @@ class NetRadiation:
         ea = era5.select('ea_kpa')
         W = ea.multiply(P).multiply(0.14).add(2.1)
         
-        # cos(θhor) — solar zenith
-        cos_theta = solar['cos_theta_hor']  # ee.Image yoki ee.Number
-        
+        # cos(θhor) — solar zenith; manfiy yoki 0 qiymatlarda pow(0.4) → NaN beradi,
+        # shuning uchun 0.01 dan pastga tushishiga yo'l qo'ymaymiz.
+        # rs_down.max(0) keyinroq quyosh ufq ostida bo'lganda 0 ga kliplaydi.
+        cos_theta = ee.Image(solar['cos_theta_hor']).max(0.01)
+
         Kt = ee.Image.constant(self.settings.kt)
-        
+
         # Beer qonuni asosida
         term1 = P.multiply(-0.00146).divide(Kt.multiply(cos_theta))
         term2 = W.divide(cos_theta).pow(0.4).multiply(-0.075)
@@ -93,23 +95,39 @@ class NetRadiation:
         
         return rs_down.max(0)
     
-    def _calc_rl_down(self, tau_sw, era5):
-        """
-        F.24: RL↓ = εa·σ·Ta⁴
-        F.25: εa = 0.85·(-ln(τsw))^0.09
-        
-        Ta = ERA5 2m temperature (K) — Ts surrogat emas.
-        """
-        # F.25: Atmosfera emissiviteti
-        ea_emiss = tau_sw.log().multiply(-1).pow(0.09).multiply(0.85).rename('ea_emiss')
-        
-        # Ta — ERA5 dan
-        Ta = era5.select('temperature_2m')
-        
-        # F.24
-        rl_down = ea_emiss.multiply(SIGMA).multiply(Ta.pow(4)).rename('RL_down')
-        
-        return rl_down
+    def _calc_rl_down(self, tau_sw, ts, anchor=None, era5=None):
+            """
+            F.24: RL↓ = εa × σ × T⁴
+            F.25: εa = 0.85 × (-ln(τsw))^0.09
+
+            Allen 2007: "In most applications of METRIC, Ts of each pixel
+            has been used as a surrogate for Ta in Eq. (24)"
+
+            Rejimlar (settings.rl_down_temp):
+            'ts'     — Ts har piksel (pyMETRIC default)
+            't_cold' — Ts_cold bitta qiymat
+            'era5'   — ERA5 T2m
+            """
+            # F.25
+            ea_emiss = (tau_sw.log().multiply(-1).max(0.001)
+                        .pow(0.09).multiply(0.85))
+
+            mode = self.settings.rl_down_temp
+
+            if mode == 't_cold' and anchor is not None:
+                T = ee.Image.constant(anchor.get('cold_ts'))
+            elif mode == 'era5' and era5 is not None:
+                T = era5.select('temperature_2m')
+            else:
+                # 'ts' — default (pyMETRIC usuli)
+                T = ts
+
+            # F.24
+            rl_down = (ea_emiss.multiply(SIGMA)
+                    .multiply(T.pow(4))
+                    .clamp(200, 500)
+                    .rename('RL_down'))
+            return rl_down
     
     def _calc_rl_up(self, ts, e0):
         """

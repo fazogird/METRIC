@@ -25,7 +25,7 @@ class VegetationIndices:
         """Barcha indekslarni hisoblash."""
         ndvi = self.calc_ndvi(image)
         savi = self.calc_savi(image)
-        lai = self.calc_lai(savi)
+        lai  = self.calc_lai(savi, method=self.settings.lai_method)
         return ndvi, savi, lai
     
     def calc_ndvi(self, image):
@@ -60,7 +60,7 @@ class VegetationIndices:
         
         return savi
     
-    def calc_lai(self, savi):
+    def calc_lai(self, savi, method='METRIC'):
         """
         F.18: LAI = -ln((0.69 - SAVI) / 0.59) / 0.91
         
@@ -71,17 +71,19 @@ class VegetationIndices:
         LAI o'simlik massasini ifodalaydi (m²/m²).
         """
         # Asosiy hisob
-        lai = (ee.Image.constant(0.69)
-            .subtract(savi)
-            .divide(0.59)
-            .log()
-            .multiply(-1)
-            .divide(0.91)
-            .rename('LAI'))
+
+        if method == 'SEBAL':
+            lai = (ee.Image.constant(0.69).subtract(savi)
+                .divide(0.59).max(0.001).log().multiply(-1).divide(0.91))
+
+        elif method == 'METRIC':
+            # savi**3 ni .pow(3) orqali yozish ancha o'qishli va optimal
+            lai = ee.Image.constant(11).multiply(savi.pow(3))
+            
+        else:
+            # Implement alternative LAI calculation method if needed
+            raise ValueError(f"Noma'lum metod: '{method}'. Faqat 'SEBAL' yoki 'METRIC' bo'lishi kerak.")
         
-        # Chegaralar qo'llash
-        lai = lai.where(savi.lt(0.1), 0)
-        lai = lai.where(savi.gt(0.687), 6.0)
-        lai = lai.clamp(0, 6.0)
-        
+        lai = lai.max(0).clamp(0, 6).rename('LAI')
+
         return lai

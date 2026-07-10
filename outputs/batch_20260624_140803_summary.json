@@ -1,0 +1,164 @@
+{
+  "run_time": "20260624_140803",
+  "n_total": 6,
+  "n_done": 5,
+  "n_skipped": 0,
+  "n_errors": 1,
+  "results": [
+    {
+      "tag": "METRIC_monthly_ET_2026-03_P152_R032",
+      "path": 152,
+      "row": 32,
+      "year": 2026,
+      "month": 3,
+      "start": "2026-03-01",
+      "end": "2026-03-31",
+      "run_time_sec": 401.5,
+      "n_images": 1,
+      "image_dates": [
+        "2026-03-24"
+      ],
+      "et_monthly_mm": 0.32,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-03-24",
+          "etrf_tile": 0.1,
+          "etr_mm_hr": 0.0442,
+          "crad": 0.9643,
+          "le_wm2": -58.7,
+          "rn_wm2": -32.4,
+          "h_wm2": 30.7
+        }
+      ],
+      "export_task_id": "A5YUF5BK4ZBW5LIU5XC6ZOZK",
+      "export_status": "READY"
+    },
+    {
+      "tag": "METRIC_monthly_ET_2026-04_P152_R032",
+      "path": 152,
+      "row": 32,
+      "year": 2026,
+      "month": 4,
+      "start": "2026-04-01",
+      "end": "2026-04-30",
+      "run_time_sec": 719.4,
+      "n_images": 2,
+      "image_dates": [
+        "2026-04-01",
+        "2026-04-25"
+      ],
+      "et_monthly_mm": 4.84,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-04-01",
+          "etrf_tile": 0.0994,
+          "etr_mm_hr": 0.0674,
+          "crad": 0.9765,
+          "le_wm2": -51.8,
+          "rn_wm2": -29.5,
+          "h_wm2": 27.5
+        },
+        {
+          "date": "2026-04-25",
+          "etrf_tile": 0.1653,
+          "etr_mm_hr": 0.1366,
+          "crad": 0.9912,
+          "le_wm2": -2.8,
+          "rn_wm2": 1.2,
+          "h_wm2": 4.3
+        }
+      ],
+      "export_task_id": "AA4EITHJ6J2HUTPNYJJRP3I4",
+      "export_status": "READY"
+    },
+    {
+      "tag": "METRIC_monthly_ET_2026-05_P152_R032",
+      "path": 152,
+      "row": 32,
+      "year": 2026,
+      "month": 5,
+      "start": "2026-05-01",
+      "end": "2026-05-31",
+      "run_time_sec": 335.3,
+      "n_images": 1,
+      "image_dates": [
+        "2026-05-19"
+      ],
+      "et_monthly_mm": 17.64,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-05-19",
+          "etrf_tile": 0.2195,
+          "etr_mm_hr": 0.1506,
+          "crad": 0.9936,
+          "le_wm2": 12.5,
+          "rn_wm2": 11.5,
+          "h_wm2": -1.9
+        }
+      ],
+      "export_task_id": "FAVTQQJZPGT5T6EDFJCPP67I",
+      "export_status": "READY"
+    },
+    {
+      "tag": "METRIC_monthly_ET_2026-04_P153_R032",
+      "path": 153,
+      "row": 32,
+      "year": 2026,
+      "month": 4,
+      "start": "2026-04-01",
+      "end": "2026-04-30",
+      "run_time_sec": 318.0,
+      "n_images": 1,
+      "image_dates": [
+        "2026-04-24"
+      ],
+      "et_monthly_mm": 6.1,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-04-24",
+          "etrf_tile": 0.1805,
+          "etr_mm_hr": 0.129,
+          "crad": 1.0165,
+          "le_wm2": -13.2,
+          "rn_wm2": 0.3,
+          "h_wm2": 14.6
+        }
+      ],
+      "export_task_id": "HDTNBTVV5J7SWDWJTCOVNCSY",
+      "export_status": "READY"
+    },
+    {
+      "tag": "METRIC_monthly_ET_2026-05_P153_R032",
+      "path": 153,
+      "row": 32,
+      "year": 2026,
+      "month": 5,
+      "start": "2026-05-01",
+      "end": "2026-05-31",
+      "run_time_sec": 478.6,
+      "n_images": 1,
+      "image_dates": [
+        "2026-05-26"
+      ],
+      "et_monthly_mm": 10.46,
+      "albedo_method": "avg3",
+      "etrf_images": [
+        {
+          "date": "2026-05-26",
+          "etrf_tile": 0.1952,
+          "etr_mm_hr": 0.1719,
+          "crad": 1.0171,
+          "le_wm2": 0.9,
+          "rn_wm2": 4.5,
+          "h_wm2": 4.3
+        }
+      ],
+      "export_task_id": "WBFWYOZ3XZSCSITDHAR365ND",
+      "export_status": "READY"
+    }
+  ]
+}

@@ -31,7 +31,7 @@ class Settings:
     landuse_collection: str = "GOOGLE/DYNAMICWORLD/V1"
     
     # --- Albedo ---
-    albedo_method: str = "olmedo"      # 'olmedo' yoki 'liang'
+    albedo_method: str = "liang"        # 'olmedo' | 'liang' | 'ke' | 'tasumi' | 'avg3'
     
     # --- Soil Heat Flux ---
     g_method: str = "bastiaanssen"     # 'bastiaanssen' (F.26) yoki 'tasumi' (F.27)
@@ -56,7 +56,8 @@ class Settings:
     # --- Meteorologiya ---
     kt: float = 1.0                    # Turbidity coefficient (F.4)
     zomw: float = 0.03                 # Meteostansiya roughness (o'tloq)
-    timezone_lon_deg: float = 0.0      # Vaqt zonasi: Idaho=-105, Uz=+69
+    timezone_lon_deg: float = 0.0      # Standart meridian = UTC_offset×15
+                                       # Idaho UTC-7 → -105.0 | O'z UTC+5 → +75.0
     
     # --- FAO56 Bare Soil ---
     etrf_bare: float = 0.05            # Default bare soil ETrF
@@ -70,8 +71,25 @@ class Settings:
     wrs_path: Optional[int] = None   # WRS-2 Path (masalan Idaho: 39)
     wrs_row:  Optional[int] = None   # WRS-2 Row  (masalan Idaho: 29)
 
+    # --- Cloud precheck: LULC cropland ustidagi piksellik bulut limiti ---
+    # cloud_cover_max: metadata filter (butun scene)
+    # roi_cloud_max:   pixel-level filter (faqat cropland ustida)
+    roi_cloud_max: int = 30          # % — cropland ustidagi bulut maksimumi
+
     # --- Validation ---
     openet_collection: Optional[str] = "OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0"
+    
+    # --- ETrF interpolatsiya usuli ---
+    etrf_interpolation: str = "article"   # 'article' | 'linear' | 'cubic'
+    
+    # --- LAI hisoblash usuli ---
+    lai_method: str = "METRIC"  # 'METRIC' → 11×SAVI³  |  'SEBAL' → -ln((0.69-SAVI)/0.59)/0.91
+
+    # --- RL↓ harorat manbai ---
+    rl_down_temp: str = "ts"    # 'ts' | 't_cold' | 'era5'
+    # 'ts'     — har piksel Ts (pyMETRIC, Allen 2007 default)
+    # 't_cold' — cold piksel Ts (bitta qiymat, butun tasvir uchun)
+    # 'era5'   — ERA5 T2m (havo harorati raster)
     
     def get_landsat_collections(self) -> list:
         """L8 va L9 ikkala collectionni qaytaradi."""
